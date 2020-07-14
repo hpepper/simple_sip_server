@@ -1,0 +1,9 @@
+write main loop
+Support REGISTER
+Support Invite
+have unit tests
+support coverage
+Support security scans
+Be able to run under alpine
+Should this repo contain both the server code and the client code?
+Support jaeger
