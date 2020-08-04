@@ -12,3 +12,12 @@
 ### Overview
 
 The sip server is a single thread looping server, meant to scale out under load.
+
+# Deployment
+
+## Build
+
+### Building the server
+
+cd src/server
+

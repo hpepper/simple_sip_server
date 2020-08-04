@@ -1,13 +1,22 @@
-write main loop
-    Open UDP port
-    Listen for incomming data
-        Do I put the incomming data into multiple queues, one queue for every comm "session" UA message?
-Support REGISTER
-Support Invite
-have unit tests
-support coverage
-Support security scans
-send out statistics on queue lengths, response times etc.
-Be able to run under alpine
-Should this repo contain both the server code and the client code?
-Support jaeger
+# WIP
+
+# BACKLOG
+
+* Doc: port
+* write main loop
+  * Open UDP port
+    * Listen for incomming data
+      * Do I put the incomming data into multiple queues, one queue for every comm "session" UA message?
+* Start unit testing
+* Start code coverage
+* Start security scan
+* Support REGISTER
+* Support Invite
+* send out statistics on queue lengths, response times etc.
+* Be able to run under alpine
+* Should this repo contain both the server code and the client code?
+* Support jaeger
+* Documentation
+  * MSC for setting up a call
+
+# DONE
