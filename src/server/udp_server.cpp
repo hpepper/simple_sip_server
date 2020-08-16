@@ -1,7 +1,5 @@
 #include "udp_server.h"
 
-
-
 #include <arpa/inet.h>
 #include <errno.h>
 #include <netdb.h>
@@ -23,6 +21,8 @@
  */
 UdpServer::UdpServer()
 {
+    m_jsonLogging = new JsonLogging();
+
     struct addrinfo hints;
     memset(&hints, 0, sizeof(hints));
     hints.ai_family = AF_INET;
@@ -30,6 +30,8 @@ UdpServer::UdpServer()
     hints.ai_flags = AI_PASSIVE;
 
     std::string portString = std::to_string(serverPort);
+
+    m_jsonLogging->logText("INFO", "Server init port " + portString, __FILE__, __LINE__);
      // TODO read up on this
     // TODO take the port number from the private var.
     getaddrinfo(0, portString.c_str(), &hints, &bindAddress);
@@ -42,6 +44,8 @@ UdpServer::UdpServer()
         // TODO is there a perror call?
         // TODO how to handle print in C++
         // fprintf(stderr, "socket() failed. (%d)\n", errno());
+        
+        m_jsonLogging->logText("FATAL", "socket() failed with error: " + m_jsonLogging->convertErrnoToErrString(errno), __FILE__, __LINE__);
         exit(1);
     }
 
@@ -56,4 +60,7 @@ UdpServer::~UdpServer()
 {
     freeaddrinfo(bindAddress);
 
+    if (m_jsonLogging != nullptr) {
+        delete(m_jsonLogging);
+    }
 }

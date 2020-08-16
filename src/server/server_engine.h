@@ -1,6 +1,7 @@
 #ifndef SERVER_ENGINE
 #define SERVER_ENGINE
 
+#include "json_logging.h"
 #include "udp_server.h"
 
 /**
@@ -17,7 +18,7 @@ public:
 
 private:
     UdpServer *m_pUdpServer = nullptr;
-
+    JsonLogging *m_jsonLogging = nullptr;
 };
 
 #endif // SERVER_ENGINE
