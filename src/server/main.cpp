@@ -6,6 +6,8 @@
 #include <boost/program_options.hpp>
 #include <iostream>
 
+#include "server_engine.h"
+
 int main(int argc, char *argv[])
 {
     // The origin for doing the option thing is from the book: Boost CPP application dev cookbook 2nd ed.
@@ -30,4 +32,9 @@ int main(int argc, char *argv[])
         std::cout << desc << "\n";
         return 1;
     }
+
+    ServerEngine serverEngine;
+
+    serverEngine.mainServerLoop();
+
 }
