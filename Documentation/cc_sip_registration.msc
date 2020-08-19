@@ -1,0 +1,5 @@
+@startuml
+UAC -> Registrar: SIP:REGISTER
+Registrar -> LocationService: Store
+Alice <-- Bob: Another authentication Response
+@enduml
