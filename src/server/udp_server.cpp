@@ -37,21 +37,18 @@ UdpServer::UdpServer()
     getaddrinfo(0, portString.c_str(), &hints, &bindAddress);
 
 
-    int socket_listen;
-    socket_listen = socket(bindAddress->ai_family,
+    
+    m_socketListen = socket(bindAddress->ai_family,
             bindAddress->ai_socktype, bindAddress->ai_protocol);
-    if (socket_listen == -1) {
-        // TODO is there a perror call?
-        // TODO how to handle print in C++
-        // fprintf(stderr, "socket() failed. (%d)\n", errno());
-        
-        m_jsonLogging->logText("FATAL", "socket() failed with error: " + m_jsonLogging->convertErrnoToErrString(errno), __FILE__, __LINE__);
+    if (m_socketListen == -1) {
+        m_jsonLogging->logText("CRITICAL", "socket() failed with error: " + m_jsonLogging->convertErrnoToErrString(errno), __FILE__, __LINE__);
         exit(1);
     }
 
-    if (bind(socket_listen,
+    if (bind(m_socketListen,
                 bindAddress->ai_addr, bindAddress->ai_addrlen)) {
-        // fprintf(stderr, "bind() failed. (%d)\n", errno());
+        // TODO include ai_addr
+        m_jsonLogging->logText("CRITICAL", "bind() failed with error: " + m_jsonLogging->convertErrnoToErrString(errno), __FILE__, __LINE__);
         exit(2);
     }
 }
@@ -63,4 +60,21 @@ UdpServer::~UdpServer()
     if (m_jsonLogging != nullptr) {
         delete(m_jsonLogging);
     }
+}
+
+
+void UdpServer::getCompleteMessage()
+{
+     m_jsonLogging->logText("INFO", "Server engine started", __FILE__, __LINE__);
+
+    // get message from udp q, if available
+    // Check using the SIP rules
+    struct sockaddr_storage client_address;
+    socklen_t client_len = sizeof(client_address);
+    char read[1024];
+    int bytes_received = recvfrom(m_socketListen,
+                                  read, 1024,
+                                  0,
+                                  (struct sockaddr *)&client_address, &client_len);
+    printf("DDD Message received: '%s'\n", read);
 }

@@ -19,12 +19,16 @@ public:
     UdpServer();
     ~UdpServer();
 
+    // TODO return SDP ?
+    void getCompleteMessage();
+
 private:
     JsonLogging *m_jsonLogging = nullptr;
 
 
     int serverPort = SERVER_PORT_INSECURE;
     struct addrinfo *bindAddress;
+    int m_socketListen = 0;
 
 
 };
