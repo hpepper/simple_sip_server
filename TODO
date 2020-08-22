@@ -1,6 +1,14 @@
 # WIP
 
+* get Client to connect to server
+
 # BACKLOG
+
+* Build the Register message, on client
+* receive register message on server
+* build respons on server
+* receive response on client
+* document MSC
 
 * Doc: port
 * write main loop
@@ -19,4 +27,5 @@
 * Documentation
   * MSC for setting up a call
 
+* encrypt local phonebook, so it can be read, and so it can't be tampered with.
 # DONE

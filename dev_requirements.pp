@@ -3,3 +3,6 @@
 package { 'libboost-program-options-dev': ensure => present }
 package { 'plantuml': ensure => present }
 package { 'libssl-dev': ensure => present }
+package { 'cxxtest': ensure => present }
+
+

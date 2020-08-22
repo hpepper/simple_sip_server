@@ -1,17 +1,17 @@
-all: sipclient
+all: sipclient ../common/json_logging.o
 
-sipclient: main.cpp client_engine.o udp_client.o ../Common/json_logging.o
-	g++ main.cpp -o sipclient -I . -I ../Common  client_engine.o udp_client.o ../Common/json_logging.o -lstdc++ -L /usr/lib/x86_64-linux-gnu -lboost_program_options
+sipclient: main.cpp client_engine.o udp_client.o ../common/json_logging.o
+	g++ main.cpp -o sipclient -I . -I ../common  client_engine.o udp_client.o ../common/json_logging.o -lstdc++ -L /usr/lib/x86_64-linux-gnu -lboost_program_options
 
 clean:
 	- rm *.o
-	- cd ../Common; make clean
+	- cd ../common; make clean
 
 distclean: clean
 	rm sipclient
 
-../Common/json_logging.o: ../Common/json_logging.cpp
-	cd ../Common; make all
+../common/json_logging.o: ../common/json_logging.cpp
+	cd ../common; make all
 
 .cpp.o:
-	g++ -c -I ../Common $<
+	g++ -c -I ../common $<
