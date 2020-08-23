@@ -6,6 +6,7 @@
 ClientEngine::ClientEngine() {
     m_pUdpClient = new UdpClient();
     m_jsonLogging = new JsonLogging();
+    m_pSipMessageRegister = new SipMessageRegister();
 }
 
 ClientEngine::~ClientEngine() {
@@ -20,7 +21,9 @@ ClientEngine::~ClientEngine() {
 void ClientEngine::mainClientLoop()
 {
     m_jsonLogging->logText("INFO", "Client engine started", __FILE__, __LINE__);
-    m_pUdpClient->sendMessage();
+    m_pSipMessageRegister->SetDomain("example.com");
+    m_pSipMessageRegister->SetUserInfo("801");
+    m_pUdpClient->sendMessage(m_pSipMessageRegister->GetAssembledMessage());
     while(1)
     {
         sleep(5);

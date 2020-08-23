@@ -63,12 +63,11 @@ UdpClient::~UdpClient()
     }
 }
 
-void UdpClient::sendMessage()
+void UdpClient::sendMessage(std::string message)
 {
-    const char *message = "Hello World";
-    printf("Sending: %s\n", message);
+    printf("Sending: %s\n", message.c_str());
     int bytes_sent = sendto(m_socketListen,
-                            message, strlen(message),
+                            message.c_str(), message.size(),
                             0,
                             m_peerAddress->ai_addr, m_peerAddress->ai_addrlen);
     printf("Sent %d bytes.\n", bytes_sent);

@@ -1,3 +1,4 @@
+sipclient
 sipserver
 *.o
 .vscode

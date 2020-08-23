@@ -1,13 +1,13 @@
 # WIP
 
-* get Client to connect to server
+
 
 # BACKLOG
 
-* Build the Register message, on client
 * receive register message on server
 * build respons on server
 * receive response on client
+* build a .a archive in 'common' dir
 * document MSC
 
 * Doc: port
@@ -30,4 +30,8 @@
 * TODO verify that the REGISTER is allowed to belong to that system and network
 
 * encrypt local phonebook, so it can be read, and so it can't be tampered with.
+
 # DONE
+
+* 20200823 - Build the Register message, on client
+* 20200816 - get Client to connect to server

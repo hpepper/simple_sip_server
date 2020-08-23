@@ -2,6 +2,7 @@
 #define UDP_CLIENT
 
 #include "json_logging.h"
+#include <string>
 
 // https://cs.baylor.edu/~donahoo/practical/CSockets/practical/
 
@@ -20,7 +21,7 @@ public:
     ~UdpClient();
 
     // TODO return SDP ?
-    void sendMessage();
+    void sendMessage(std::string);
 
 private:
     JsonLogging *m_jsonLogging = nullptr;

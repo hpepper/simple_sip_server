@@ -3,6 +3,8 @@
 
 #include "json_logging.h"
 #include "udp_client.h"
+#include "sip_message_register.h"
+
 
 /**
  * @brief The ClientEngine class
@@ -18,6 +20,7 @@ public:
 
 private:
     UdpClient *m_pUdpClient = nullptr;
+    SipMessageRegister *m_pSipMessageRegister = nullptr;
     JsonLogging *m_jsonLogging = nullptr;
 };
 
