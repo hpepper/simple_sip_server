@@ -1,4 +1,5 @@
 sipserver
 *.o
 .vscode
+runner
 runner.cpp

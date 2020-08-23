@@ -25,15 +25,41 @@ std::string SipMessageBase::GetAssembledMessage()
     return(returnString);
 }
 
+int SipMessageBase::GetCommandSequenceNumber()
+{
+    return(commandSequenceNumber);
+}
+
 std::string SipMessageBase::GetMethod()
 {
     return(m_sipMethod);
+}
+
+std::string SipMessageBase::GetDomain()
+{
+    return(m_domain);
 }
 
 void SipMessageBase::SetDomain(std::string domain)
 {
     // TODO V validate the string see rfc3261
     m_domain = domain;
+}
+
+UNSIGNED_INTEGER_64_BIT SipMessageBase::GetRegistrationExpirationSeconds()
+{
+    return(registrationExpirationSeconds);
+}
+
+
+std::string SipMessageBase::GetScheme()
+{
+    return(m_scheme);
+}
+
+std::string SipMessageBase::GetUserInfo()
+{
+    return(m_userInfo);
 }
 void SipMessageBase::SetUserInfo(std::string userinfo)
 {

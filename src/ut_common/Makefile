@@ -1,3 +1,5 @@
+# make clean all
+
 CXXTEST=.
 
 all: ../common/sip_message_base.o ../common/sip_message_register.o runner

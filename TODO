@@ -26,6 +26,8 @@
 * Support jaeger
 * Documentation
   * MSC for setting up a call
+* On group change, the previous group has to be deregistered and the new group has to be registered.
+* TODO verify that the REGISTER is allowed to belong to that system and network
 
 * encrypt local phonebook, so it can be read, and so it can't be tampered with.
 # DONE
