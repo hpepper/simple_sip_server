@@ -20,7 +20,7 @@ public:
     ~UdpServer();
 
     // TODO return SDP ?
-    void getCompleteMessage();
+    std::string getCompleteMessage();
 
 private:
     JsonLogging *m_jsonLogging = nullptr;

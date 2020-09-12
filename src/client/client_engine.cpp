@@ -26,6 +26,7 @@ void ClientEngine::mainClientLoop()
     m_pUdpClient->sendMessage(m_pSipMessageRegister->GetAssembledMessage());
     while(1)
     {
+        // TODO non-blocking read from UDP. peek if there is data?
         sleep(5);
     }
 }

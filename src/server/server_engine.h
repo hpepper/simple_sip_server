@@ -19,6 +19,9 @@ public:
 private:
     UdpServer *m_pUdpServer = nullptr;
     JsonLogging *m_jsonLogging = nullptr;
+
+    // TODO get from ENV
+    std::string m_supportedDomainName = "example.com";
 };
 
 #endif // SERVER_ENGINE

@@ -9,6 +9,11 @@ SipMessageBase::SipMessageBase()
 {
 }
 
+SipMessageBase::SipMessageBase(std::string message)
+{
+    m_messageRecieved = message;
+}
+
 SipMessageBase::~SipMessageBase()
 {
 }
@@ -38,6 +43,16 @@ std::string SipMessageBase::GetMethod()
 std::string SipMessageBase::GetDomain()
 {
     return(m_domain);
+}
+
+bool SipMessageBase::IsSipVersionSupported(std::string versionString)
+{
+    bool supported = false;
+    if ( versionString.compare("SIP/2.0"))
+    {
+        supported = true;
+    }
+    return(supported);
 }
 
 void SipMessageBase::SetDomain(std::string domain)

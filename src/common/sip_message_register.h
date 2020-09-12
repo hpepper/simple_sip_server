@@ -13,7 +13,10 @@
 class SipMessageRegister : public SipMessageBase {
 public:
     SipMessageRegister();
+    SipMessageRegister(std::string);
     ~SipMessageRegister();
+
+    int DisectMessage();
 
 
 

@@ -1,10 +1,9 @@
 # WIP
 
-
+* receive register message on server
 
 # BACKLOG
 
-* receive register message on server
 * build respons on server
 * receive response on client
 * build a .a archive in 'common' dir

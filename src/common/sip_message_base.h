@@ -18,13 +18,17 @@
 class SipMessageBase {
 public:
     SipMessageBase();
+    SipMessageBase(std::string);
     ~SipMessageBase();
 
+    int DisectMessage();
     std::string GetAssembledMessage();
     int GetCommandSequenceNumber();
     std::string GetMethod();
     UNSIGNED_INTEGER_64_BIT GetRegistrationExpirationSeconds();
     std::string GetScheme();
+
+    bool IsSipVersionSupported(std::string);
 
     // use 'SIPS:'
     void UseSecureComTagInMessage();
@@ -58,6 +62,8 @@ protected:
 
     // 20.19 Expires - gives the relative time after which the message (or content) expires.
     UNSIGNED_INTEGER_64_BIT registrationExpirationSeconds = 3600;
+
+    std::string m_messageRecieved = "";
 
 };
 

@@ -23,6 +23,45 @@ cd src/server
 
 # RFC3161
 
+## 7
+
+#### 7.3.1 Header Field Format
+
+it is RECOMMENDED that header fields which are
+   needed for proxy processing (Via, Route, Record-Route, Proxy-Require,
+   Max-Forwards, and Proxy-Authorization, for example) appear towards
+   the top of the message to facilitate rapid parsing.  The relative
+   order of header field rows with the same field name is important.
+   Multiple header field rows with the same field-name MAY be present in
+   a message if and only if the entire field-value for that header field
+   is defined as a comma-separated list (that is, if follows the grammar
+   defined in Section 7.3).  It MUST be possible to combine the multiple
+   header field rows into one "field-name: field-value" pair, without
+   changing the semantics of the message, by appending each subsequent
+   field-value to the first, each separated by a comma.  The exceptions
+   to this rule are the WWW-Authenticate, Authorization, Proxy-
+   Authenticate, and Proxy-Authorization header fields.
+
+field-name: field-value *(;parameter-name=parameter-value)
+
+When comparing header fields, field names are always case insensitive. 
+  Unless otherwise stated in the definition of a particular header field, field values, parameter names, and parameter values are case-insensitive.
+  Tokens are always case-insensitive.
+  Unless specified otherwise, values expressed as quoted strings are case-sensitive.
+
+#### 7.3.2 Header Field Classification
+
+Some header fields only make sense in requests or responses. 
+ These are called request header fields and response header fields, respectively.
+ If a header field appears in a message not matching its category (such as a request header field in a response), it MUST be ignored.
+ Section 20 defines the classification of each header field.
+
+#### 7.3.3 Compact Form
+ A compact
+   form MAY be substituted for the longer form of a header field name at
+   any time without changing the semantics of the message.
+
+
 ## 10
 
 ### 10.2 Constructing the REGISTER Request

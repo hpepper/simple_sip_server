@@ -63,18 +63,33 @@ UdpServer::~UdpServer()
 }
 
 
-void UdpServer::getCompleteMessage()
+std::string UdpServer::getCompleteMessage()
 {
+    std::string completeMessage = "";
+
      m_jsonLogging->logText("INFO", "Server engine started", __FILE__, __LINE__);
+
 
     // get message from udp q, if available
     // Check using the SIP rules
     struct sockaddr_storage client_address;
     socklen_t client_len = sizeof(client_address);
-    char read[1024];
+    char read[1548];
     int bytes_received = recvfrom(m_socketListen,
                                   read, 1024,
                                   0,
                                   (struct sockaddr *)&client_address, &client_len);
     printf("DDD Message received: '%s'\n", read);
+    // Is the whole message there? does it end in double \r\n ?
+    std::string message = read;
+    if ( message.compare(message.length()-4,4,"\r\n\r\n") == 0 )
+    {
+        printf("DDD this is terminated\n");
+        completeMessage = message;
+    }
+    else
+    {
+        puts("WWW not terminated message, TODO implement fragmentation handling");
+    }
+    return(completeMessage);
 }
